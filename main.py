@@ -26,7 +26,10 @@ def load_config():
 config = load_config()
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='!', intents=intents, proxy=config['proxy'])
+if config['proxy'] is None or config['proxy'] == "":
+    bot = commands.Bot(command_prefix='!', intents=intents)
+else:
+    bot = commands.Bot(command_prefix='!', intents=intents, proxy=config['proxy'])
 reader = RSSReader()
 
 
