@@ -63,6 +63,7 @@ async def rss_send(ctx):
     print("\n更新订阅源...")
     new_entries = reader.update_feeds()
     print(f"\n获取到 {len(new_entries)} 条新文章:")
+    await ctx.send(f"获取到 {len(new_entries)} 条新文章")
     for entry in reversed(new_entries):
         msg = reader.format_feed_entry(entry)
         await ctx.send(msg)
